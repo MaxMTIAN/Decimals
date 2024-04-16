@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div id="formula" class="formula">点击按钮生成公式</div>
-        <input type="number" id="resultInput" class="result-input" placeholder="输入结果" oninput="checkResult()">
+        <input type="number" step="0.001" id="resultInput" class="result-input" placeholder="输入结果" onblur="checkResult()">
         <div id="resultIcon" class="result-icon"></div>
         <button onclick="generateFormula()" class="round-button">生成公式</button>
     </div>
