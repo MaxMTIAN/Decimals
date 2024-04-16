@@ -1,53 +1,45 @@
-document.getElementById('generate').addEventListener('click', generateFormula);
-document.getElementById('result').addEventListener('blur', validateResult);
-document.getElementById('showResult').addEventListener('click', showCorrectResult);
-
-let currentResult = 0;
+// script.js
+let currentFormula = '';
+let correctResult = 0;
 
 function generateFormula() {
-  const type = Math.random() < 0.5 ? 'multiplication' : 'division';
-  const num1 = generateRandomNumber();
-  const num2 = generateRandomNumber(type === 'division');
-  const formulaElement = document.getElementById('formula');
+    const type = Math.random() > 0.5 ? 'multiplication' : 'division';
+    let num1 = (Math.floor(Math.random() * 90) + 10) + Math.random().toFixed(3);
+    let num2 = (Math.floor(Math.random() * 90) + 10) + Math.random().toFixed(3);
 
-  if (type === 'multiplication') {
-    currentResult = num1 * num2;
-    formulaElement.textContent = `${num1} * ${num2} =`;
-  } else { // division
-    currentResult = num1 / num2;
-    formulaElement.textContent = `${num1} / ${num2} =`;
-  }
-  document.getElementById('result').className = 'result-input';
-  document.querySelector('.space').textContent = '';
+    if (type === 'multiplication') {
+        currentFormula = `${num1} * ${num2}`;
+        correctResult = (parseFloat(num1) * parseFloat(num2)).toFixed(3);
+    } else {
+        num2 = Math.max(0.1, parseFloat(num2).toFixed(3)); // Ensure divisor is never zero and has at least one decimal place
+        currentFormula = `${num1} / ${num2}`;
+        correctResult = (parseFloat(num1) / parseFloat(num2)).toFixed(3);
+    }
+
+    document.getElementById('formula').textContent = currentFormula;
+    document.getElementById('result-input').value = '';
+    document.getElementById('result-check').textContent = '';
+    document.getElementById('correct-result').textContent = '';
+    document.getElementById('result-input').classList.remove('correct', 'incorrect');
 }
 
-function validateResult() {
-  const userResult = parseFloat(document.getElementById('result').value);
-  const resultElement = document.getElementById('result');
-  if (userResult === currentResult) {
-    resultElement.classList.add('correct');
-    resultElement.classList.remove('incorrect');
-    resultElement.nextSibling.textContent = '✔️';
-  } else {
-    resultElement.classList.add('incorrect');
-    resultElement.classList.remove('correct');
-    resultElement.nextSibling.textContent = '❌';
-  }
+function checkResult() {
+    const inputVal = document.getElementById('result-input').value;
+    if (inputVal === correctResult) {
+        document.getElementById('result-input').classList.add('correct');
+        document.getElementById('result-input').classList.remove('incorrect');
+        document.getElementById('result-check').textContent = '✓';
+        document.getElementById('result-check').style.color = 'green';
+    } else {
+        document.getElementById('result-input').classList.add('incorrect');
+        document.getElementById('result-input').classList.remove('correct');
+        document.getElementById('result-check').textContent = '✗';
+        document.getElementById('result-check').style.color = 'red';
+    }
 }
 
 function showCorrectResult() {
-  const space = document.querySelector('.space');
-  space.textContent = `Correct result: ${currentResult.toFixed(3)}`;
+    document.getElementById('correct-result').textContent = `正确结果是: ${correctResult}`;
 }
 
-function generateRandomNumber(division = false) {
-  const max = 99.999;
-  const min = 0.001;
-  let number = (Math.random() * (max - min) + min).toFixed(3);
-  if (division) {
-    while (number.includes('0')) {
-      number = (Math.random() * (max - min) + min).toFixed(3);
-    }
-  }
-  return parseFloat(number);
-}
+document.getElementById('result-input').addEventListener('blur', checkResult);
