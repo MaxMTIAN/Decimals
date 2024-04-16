@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+.container {
+    text-align: center;
+}
+.formula {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.result-input {
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
+}
+.result-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+.round-button {
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.round-button:focus {
+    outline: none;
+}
+.round-button:active {
+    background-color: #367B3A;
+}
