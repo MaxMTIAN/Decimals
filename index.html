@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小数乘除运算练习</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Quiz</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div id="formula" class="formula">点击按钮生成公式</div>
-        <div class="rotated-equals">⦸</div>
-        <input type="number" step="0.001" id="resultInput" class="result-input" placeholder="输入结果" onblur="checkResult()">
-        <div class="spacer"></div>
-        <button onclick="generateFormula()" class="round-button">生成公式</button>
-        <button onclick="showCorrectResult()" class="rect-button">显示结果</button>
-        <div id="correctResult" class="correct-result"></div>
-    </div>
-    <script src="script.js"></script>
+<div class="container">
+    <div id="formula" class="formula">Press generate!</div>
+    <input id="result" type="text" class="result-input" placeholder="Enter result">
+    <button id="generate" class="generate-btn">Generate Formula</button>
+    <div class="space"></div>
+    <button id="showResult" class="result-btn">Show Result</button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
