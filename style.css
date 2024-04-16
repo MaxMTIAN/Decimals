@@ -13,31 +13,38 @@ body {
     font-size: 24px;
     margin-bottom: 20px;
 }
+.rotated-equals {
+    font-size: 36px;
+    transform: rotate(90deg);
+    margin-bottom: 10px;
+}
 .result-input {
     font-size: 20px;
     margin: 10px;
     padding: 10px;
     width: 150px;
 }
-.result-icon {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    font-size: 24px;
+.spacer {
+    height: 20px;
 }
-.round-button {
+.round-button, .rect-button {
     font-size: 20px;
     padding: 20px;
-    border-radius: 50%;
     border: none;
-    background-color: #4CAF50;
     color: white;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
 }
-.round-button:focus {
-    outline: none;
+.round-button {
+    border-radius: 50%;
+    background-color: #4CAF50;
 }
-.round-button:active {
-    background-color: #367B3A;
+.rect-button {
+    border-radius: 10px;
+    background-color: #008CBA;
+}
+.correct-result {
+    font-size: 20px;
+    color: green;
+    margin-top: 10px;
 }
