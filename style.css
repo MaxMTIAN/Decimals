@@ -1,50 +1,58 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+body, html {
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
+
 .container {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .formula {
-    font-size: 24px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
-.rotated-equals {
-    font-size: 36px;
-    transform: rotate(90deg);
-    margin-bottom: 10px;
-}
+
 .result-input {
-    font-size: 20px;
-    margin: 10px;
-    padding: 10px;
-    width: 150px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 200px;
+  box-sizing: border-box;
 }
-.spacer {
-    height: 20px;
+
+.generate-btn, .result-btn {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
 }
-.round-button, .rect-button {
-    font-size: 20px;
-    padding: 20px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
+
+.result-btn {
+  border-radius: 12px;
 }
-.round-button {
-    border-radius: 50%;
-    background-color: #4CAF50;
+
+.space {
+  height: 30px; /* Space for showing correct result */
+  display: flex;
+  align-items: center;
+  color: green;
 }
-.rect-button {
-    border-radius: 10px;
-    background-color: #008CBA;
+
+.correct {
+  border: 2px solid green;
 }
-.correct-result {
-    font-size: 20px;
-    color: green;
-    margin-top: 10px;
+
+.incorrect {
+  border: 2px solid red;
+}
+
+.checkmark, .cross {
+  color: green;
+  margin-left: 10px;
+}
+
+.cross {
+  color: red;
 }
