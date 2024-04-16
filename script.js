@@ -1,48 +1,53 @@
-let currentResult = 0; // 用来存储当前公式的正确结果
+document.getElementById('generate').addEventListener('click', generateFormula);
+document.getElementById('result').addEventListener('blur', validateResult);
+document.getElementById('showResult').addEventListener('click', showCorrectResult);
+
+let currentResult = 0;
 
 function generateFormula() {
-    if (Math.random() < 0.5) {
-        // 生成乘法公式
-        let num1 = getRandomNumber();
-        let num2 = getRandomNumber();
-        document.getElementById('formula').textContent = `${num1} × ${num2}`;
-        currentResult = parseFloat((num1 * num2).toFixed(3)); // 保留三位小数
-    } else {
-        // 生成除法公式
-        let dividend = getRandomNumber();
-        let divisor = getRandomDivisor(dividend);
-        document.getElementById('formula').textContent = `${dividend} ÷ ${divisor}`;
-        currentResult = parseFloat((dividend / divisor).toFixed(3)); // 保留三位小数
-    }
-    document.getElementById('resultInput').value = ""; // 清空输入框
-    document.getElementById('resultInput').style.borderColor = ""; // 重置边框颜色
-    document.getElementById('correctResult').textContent = ""; // 清空结果显示区
+  const type = Math.random() < 0.5 ? 'multiplication' : 'division';
+  const num1 = generateRandomNumber();
+  const num2 = generateRandomNumber(type === 'division');
+  const formulaElement = document.getElementById('formula');
+
+  if (type === 'multiplication') {
+    currentResult = num1 * num2;
+    formulaElement.textContent = `${num1} * ${num2} =`;
+  } else { // division
+    currentResult = num1 / num2;
+    formulaElement.textContent = `${num1} / ${num2} =`;
+  }
+  document.getElementById('result').className = 'result-input';
+  document.querySelector('.space').textContent = '';
 }
 
-function getRandomNumber() {
-    // 生成一个小数点前1位或2位且小数点后3位的随机数
-    return parseFloat((Math.random() * 99 + 0.001).toFixed(3));
-}
-
-function getRandomDivisor(dividend) {
-    let divisor;
-    do {
-        divisor = parseFloat((Math.random() * 9 + 0.1).toFixed(3));
-    } while (divisor > dividend || dividend % divisor !== 0 || divisor.toString().endsWith('0'));
-    return divisor;
-}
-
-function checkResult() {
-    const userInput = parseFloat(document.getElementById('resultInput').value);
-    if (userInput === currentResult) {
-        document.getElementById('resultInput').style.borderColor = "green";
-        document.getElementById('correctResult').innerHTML = "✔️ 正确";
-    } else {
-        document.getElementById('resultInput').style.borderColor = "red";
-        document.getElementById('correctResult').innerHTML = "❌ 错误";
-    }
+function validateResult() {
+  const userResult = parseFloat(document.getElementById('result').value);
+  const resultElement = document.getElementById('result');
+  if (userResult === currentResult) {
+    resultElement.classList.add('correct');
+    resultElement.classList.remove('incorrect');
+    resultElement.nextSibling.textContent = '✔️';
+  } else {
+    resultElement.classList.add('incorrect');
+    resultElement.classList.remove('correct');
+    resultElement.nextSibling.textContent = '❌';
+  }
 }
 
 function showCorrectResult() {
-    document.getElementById('correctResult').textContent = `正确结果: ${currentResult}`;
+  const space = document.querySelector('.space');
+  space.textContent = `Correct result: ${currentResult.toFixed(3)}`;
+}
+
+function generateRandomNumber(division = false) {
+  const max = 99.999;
+  const min = 0.001;
+  let number = (Math.random() * (max - min) + min).toFixed(3);
+  if (division) {
+    while (number.includes('0')) {
+      number = (Math.random() * (max - min) + min).toFixed(3);
+    }
+  }
+  return parseFloat(number);
 }
