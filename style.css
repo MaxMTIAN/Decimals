@@ -1,58 +1,62 @@
-body, html {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.formula {
-  margin-bottom: 20px;
-  font-size: 24px;
+input[type="text"] {
+    border: 2px solid #ccc;
+    padding: 8px;
+    width: 200px;
+    margin: 10px 0;
 }
 
-.result-input {
-  margin-bottom: 20px;
-  padding: 10px;
-  width: 200px;
-  box-sizing: border-box;
+input[type="text"]:focus {
+    outline: none;
+    border-color: #blue;
 }
 
-.generate-btn, .result-btn {
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  border-radius: 50%;
-  font-size: 16px;
-  cursor: pointer;
+button {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
 }
 
-.result-btn {
-  border-radius: 12px;
+button:hover {
+    background-color: #0056b3;
 }
 
-.space {
-  height: 30px; /* Space for showing correct result */
-  display: flex;
-  align-items: center;
-  color: green;
+#result-check {
+    font-size: 24px;
+}
+
+#correct-result {
+    color: green;
+    font-weight: bold;
 }
 
 .correct {
-  border: 2px solid green;
+    border-color: green;
 }
 
 .incorrect {
-  border: 2px solid red;
+    border-color: red;
 }
 
-.checkmark, .cross {
-  color: green;
-  margin-left: 10px;
-}
-
-.cross {
-  color: red;
+.hide {
+    display: none;
 }
