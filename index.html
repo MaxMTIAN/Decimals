@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>小数乘除练习</title>
+<title>Math Formula Calculator</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="container">
-    <div id="formula" class="formula">Press generate!</div>
-    <input id="result" type="text" class="result-input" placeholder="Enter result">
-    <button id="generate" class="generate-btn">Generate Formula</button>
-    <div class="space"></div>
-    <button id="showResult" class="result-btn">Show Result</button>
+    <p id="formula">点击下方按钮生成公式</p>
+    <p>=</p>
+    <input type="text" id="result-input" placeholder="输入结果">
+    <span id="result-check"></span>
+    <button onclick="generateFormula()">生成公式</button>
+    <button onclick="showCorrectResult()">显示结果</button>
+    <p id="correct-result"></p>
 </div>
 <script src="script.js"></script>
 </body>
